@@ -2,3 +2,4 @@
 *.pyc
 auth.py
 q_bot/*
+*.log
