@@ -1,16 +1,12 @@
 #!/usr/bin/env python3
 "bot.py"
-import auth
+
 import argparse
-import discord
 import logging
 
-LOG_LOC = "./qbot.log"
-TOKEN = auth.DISCORD_TOKEN
-GUILD = auth.DISCORD_GUILD
+import quarantinebot.bot as qb
 
-
-client = discord.Client()
+LOG_LOC = "/tmp/qbot.log"
 
 
 def setup_arguments():
@@ -36,9 +32,8 @@ def setup_arguments():
 
 
 def setup_logging(debug, file_name):
-    """
-    Sets defaults for logging
-    """
+    "Sets defaults for logging."
+
     log_format = '%(asctime)s - %(message)s'
     if debug:
         severity = logging.DEBUG
@@ -47,25 +42,8 @@ def setup_logging(debug, file_name):
     logging.basicConfig(format=log_format, level=severity, filename=file_name)
      
 
-
-
-@client.event
-async def on_ready():
-    """
-    Logs connection attempt and guild id on sucessful login
-    """
-    if len(client.guilds) > 1:
-        print("We've been hacked")
-        client.close()
-    guild = discord.utils.get(client.guilds,name=GUILD)
-    logging.info(
-        "%s is connected to the following guild: \
-%s: (id: %s)", client.user, guild.name, guild.id
-        )
-
-
 if __name__  == "__main__":    
     args = setup_arguments()
     setup_logging(args.debug, args.filename)
-    client.run(TOKEN)
+    qb.bot.run(qb.TOKEN)
  
