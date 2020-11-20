@@ -5,8 +5,9 @@ from datetime import datetime as dt
 class Quarantine(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self._q_start = "23/03/2020 20:30:00"
-    
+        self._q_start = "05/11/2020 00:01:00"
+
+
     @staticmethod
     def get_lock_time(date_start):
         """

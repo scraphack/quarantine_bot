@@ -19,7 +19,7 @@ bot.add_cog(cogs.Quarantine(bot))
 async def on_ready():
     "Logs connection attempt and guild id on sucessful login"
 
-    if len(bot.guilds) > 1:
+    if len(bot.guilds) > 2:
         print("We've been hacked")
         bot.close()
     guild = discord.utils.get(bot.guilds,name=GUILD)
