@@ -3,9 +3,9 @@ from discord.ext import commands
 from datetime import datetime as dt
 
 class Quarantine(commands.Cog):
-    def __init__(self, bot):
+    def __init__(self, bot, q_start):
         self.bot = bot
-        self._q_start = "05/11/2020 00:01:00"
+        self._q_start = q_start
 
 
     @staticmethod
